@@ -1,0 +1,12 @@
+---
+# tasks file for roles/create_directory
+- name: Ansible create mutliple directory with permissions
+  ansible.builtin.file:
+    path: /root/mkdir/{{ item.path }}
+    mode: "{{item.mode}}"
+    state: directory
+  with_items:
+    - { path: 'mysql', mode: '0777'}
+    - { path: 'repository', mode: '0755'}
+    - { path: 'config', mode: '0707'}
+
